@@ -1,0 +1,34 @@
+const express = require('express');
+const mongoose = require('mongoose');
+const graphqlHTTP = require('express-graphql');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+
+const schema = require('./schema');
+const { port, database } = require('./config');
+const auth = require('./middlewares/auth');
+const app = express();
+
+// database connection
+mongoose.connect(database).then(() => {
+    console.log('Connected to DB');
+}, err => console.log(err));
+
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended:true })); // read utf-8 encoded
+
+app.use('/graphql', auth, graphqlHTTP(req => ({
+    schema,
+    graphiql: true,
+    context: {
+        user: req.user
+    }
+})));
+
+app.listen(port, (err) => {
+    if (err) console.log(err);
+    console.log(`Server started at port ${port}`);
+});
+
+module.exports = app;
