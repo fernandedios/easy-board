@@ -16,12 +16,10 @@ mongoose.connect(database).then(() => {
 
 app.use(cors());
 
-app.use('/api', bodyParser.json(), auth, graphqlHTTP(req => ({
+app.use('/api', bodyParser.json(), auth, graphqlHTTP(({ user }) => ({
     schema,
     graphiql: false,
-    context: {
-        user: req.user
-    }
+    context: { user }
 })));
 
 app.listen(port, (err) => {

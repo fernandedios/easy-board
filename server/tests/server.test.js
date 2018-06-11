@@ -1,7 +1,7 @@
 const tester = require('graphql-tester').tester;
 
-const create = require('./create');
 const app = require('../server');
+const create = require('./create');
 const { users, populateUsers } = require('./seed');
 
 const defaultUser = {
