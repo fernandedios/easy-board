@@ -4,7 +4,7 @@
   "description": "NodeJS server companion for easy-board",
   "main": "server.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --forceExit",
     "dev": "nodemon server.js"
   },
   "keywords": [
@@ -28,6 +28,7 @@
     "mongoose": "^5.1.4"
   },
   "devDependencies": {
+    "graphql-tester": "0.0.5",
     "jest": "^23.1.0",
     "nodemon": "^1.17.5"
   }

@@ -5,7 +5,7 @@ const User = require('../models/user');
 
 const resolvers = {
     Query: {
-        async me (root, arguments, { user }) {
+        async me (root, args, { user }) {
             if (!user) {
                 throw new Error('You are not logged in');
             }
