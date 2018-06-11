@@ -15,12 +15,10 @@ mongoose.connect(database).then(() => {
 }, err => console.log(err));
 
 app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended:true })); // read utf-8 encoded
 
-app.use('/graphql', auth, graphqlHTTP(req => ({
+app.use('/api', bodyParser.json(), auth, graphqlHTTP(req => ({
     schema,
-    graphiql: true,
+    graphiql: false,
     context: {
         user: req.user
     }

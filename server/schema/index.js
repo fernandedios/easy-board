@@ -1,10 +1,23 @@
-const graphql = require('graphql');
-const { GraphQLSchema } = graphql;
+const { makeExecutableSchema } = require('graphql-tools');
+const resolvers = require('./resolvers');
 
-const RootQueryType = require('./types/rootQueryType');
-const mutation = require('./mutations');
+const typeDefs = `
+  type User {
+    _id: String!
+    name: String!
+    email: String!
+    role: String!
+    avatar: String!
+  }
 
-module.exports = new GraphQLSchema({
-  query: RootQueryType,
-  mutation
-});
+  type Query {
+    me: User
+  }
+
+  type Mutation {
+    signup (name: String!, email: String!, password: String!, role: String!, avatar: String): String
+    login (email: String!, password: String!): String
+  }
+`
+
+module.exports = makeExecutableSchema({ typeDefs, resolvers });
