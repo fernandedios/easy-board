@@ -15,7 +15,6 @@ mongoose.connect(database).then(() => {
 }, err => console.log(err));
 
 app.use(cors());
-
 app.use('/api', bodyParser.json(), auth, graphqlHTTP(({ user }) => ({
     schema,
     graphiql: false,

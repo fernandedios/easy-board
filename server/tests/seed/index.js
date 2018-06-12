@@ -24,10 +24,10 @@ const populateUsers = (done) => {
     .then(() => {
         let userOne = new User(users[0]).save();
         let userTwo = new User(users[1]).save();
-  
+
         return Promise.all([userOne, userTwo])
-      })
-      .then(() => done());
+    })
+    .then(() => done());
 };
 
 module.exports = { users, populateUsers };

@@ -3,7 +3,7 @@ const resolvers = require('./resolvers');
 
 const typeDefs = `
   type User {
-    _id: String!
+    _id: ID!
     name: String!
     email: String!
     role: String!
@@ -11,7 +11,7 @@ const typeDefs = `
   }
 
   type Board {
-    _id: String!
+    _id: ID!
     title: String!
     description: String!
     owner: User
