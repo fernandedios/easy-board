@@ -3,15 +3,55 @@ const jwt = require('jsonwebtoken');
 const { secretKey, duration } = require('../config');
 const User = require('../models/user');
 const Board = require('../models/board');
+const List = require('../models/list');
 
 const resolvers = {
     Query: {
+        /*  USER */
         async me (root, args, { user }) {
-            if (!user) {
-                throw new Error('You are not logged in');
-            }
+            if (!user) { throw new Error('You are not logged in'); }
 
             return await User.findById(user.user._id);
+        },
+
+        /*  BOARD */
+        async getUserBoards (root, args, { user }) {
+            if (!user) { throw new Error('You are not logged in'); }
+
+            return await Board.find({ owner: user.user._id });
+        },
+
+        async getOtherBoards (root, args, { user }) {
+            if (!user) { throw new Error('You are not logged in'); }
+
+            const boards =  await Board.find({});
+
+            return boards.filter((board) => {
+                return board.owner !== user.user._id;
+            });
+        },
+
+        async getAllBoards (root, args, { user }) {
+            if (!user) { throw new Error('You are not logged in'); }
+
+            return await Board.find({});
+        },
+
+        /*  LIST */
+        // board = board._id
+        async getLists (root, { board }, { user }) {
+            if (!user) { throw new Error('You are not logged in'); }
+
+            try {
+                const foundBoard = await Board.findById(board);
+                if (!foundBoard) { throw new Error('Board not found'); }
+                if (foundBoard.owner !== user.user.id) { throw new Error('Board does not belong to current user'); }
+
+                return await List.find({ board });
+            }
+            catch (err) {
+                throw new Error(err);
+            }
         }
     },
 
@@ -50,10 +90,8 @@ const resolvers = {
         },
 
         /*  BOARD */
-        async addboard(root, { title, description }, { user }) {
-            if (!user) {
-                throw new Error('You are not logged in');
-            }
+        async addBoard(root, { title, description }, { user }) {
+            if (!user) { throw new Error('You are not logged in'); }
 
             try {
                 let board = new Board();
@@ -69,10 +107,8 @@ const resolvers = {
             }
         },
 
-        async editboard(root, { _id, title, description }, { user }) {
-            if (!user) {
-                throw new Error('You are not logged in');
-            }
+        async editBoard(root, { _id, title, description }, { user }) {
+            if (!user) { throw new Error('You are not logged in'); }
 
             try {
                 const foundBoard = await Board.findById(_id);
@@ -84,6 +120,76 @@ const resolvers = {
                 await foundBoard.save();
 
                 return foundBoard;
+            }
+            catch (err) {
+                throw new Error(err);
+            }
+        },
+
+        async deleteBoard(root, { _id }, { user }) {
+            if (!user) { throw new Error('You are not logged in'); }
+
+            try {
+                const foundBoard = await Board.findById(_id);
+                if (!foundBoard) { throw new Error('Board not found'); }
+                if (foundBoard.owner !== user.user.id) { throw new Error('Board does not belong to current user'); }
+
+                return await Board.findOneAndRemove({ _id });
+            }
+            catch (err) {
+                throw new Error(err);
+            }
+        },
+
+        /*  LIST */
+        // board = board._id
+        async addList(root, { title, description, board }, { user }) {
+            if (!user) { throw new Error('You are not logged in'); }
+
+            try {
+                const foundBoard = await Board.findById(board);
+                if (!foundBoard) { throw new Error('Board not found'); }
+                if (foundBoard.owner !== user.user.id) { throw new Error('Board does not belong to current user'); }
+
+                const list = new List();
+                list.title = title;
+                list.description = description;
+                list.board = board;
+                await list.save();
+
+                return list;
+            }
+            catch (err) {
+                throw new Error(err);
+            }
+        },
+
+        async editList(root, { title, description, _id }, { user }) {
+            if (!user) { throw new Error('You are not logged in'); }
+
+            try {
+                const foundList = await List.findById(_id)
+                if (!foundList) { throw new Error('List not found'); }
+
+                foundList.title = title;
+                foundList.description = description;
+                await foundList.save();
+
+                return foundList;
+            }
+            catch (err) {
+                throw new Error(err);
+            }
+        },
+
+        async deleteList(root, { _id }, { user }) {
+            if (!user) { throw new Error('You are not logged in'); }
+
+            try {
+                const foundList = await List.findById(_id)
+                if (!foundList) { throw new Error('List not found'); }
+
+                return await List.findOneAndRemove({ _id });
             }
             catch (err) {
                 throw new Error(err);

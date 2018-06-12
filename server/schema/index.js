@@ -16,17 +16,33 @@ const typeDefs = `
     description: String!
     owner: User
     members: [User]
+    lists: [List]
+  }
+
+  type List {
+    _id: ID!
+    title: String!
+    description: String!
+    board: Board
   }
 
   type Query {
     me: User
+    getUserBoards: [Board]
+    getOtherBoards: [Board]
+    getAllBoards: [Board]
+    getLists: [List]
   }
 
   type Mutation {
     signup (name: String!, email: String!, password: String!, role: String!, avatar: String): String
     login (email: String!, password: String!): String
-    addboard (title: String!, description: String!): Board
-    editboard (_id: String!, title: String!, description: String!): Board
+    addBoard (title: String!, description: String!): Board
+    editBoard (_id: String!, title: String!, description: String!): Board
+    deleteBoard (_id: String!): Board
+    addList (title: String!, description: String! board: String!): List
+    editList (_id: String!, title: String!, description: String!): List
+    deleteList (_id: String!): List
   }
 `;
 

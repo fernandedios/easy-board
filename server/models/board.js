@@ -8,6 +8,9 @@ const BoardSchema = new Schema({
     members: [
         { type: Schema.Types.ObjectId, ref: 'User' }
     ],
+    lists: [
+        { type: Schema.Types.ObjectId, ref: 'List' }
+    ],
     created: { type: Date, default: Date.now }
 });
 
