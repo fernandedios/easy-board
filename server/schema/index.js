@@ -41,6 +41,7 @@ const typeDefs = `
     getOtherBoards: [Board]
     getAllBoards: [Board]
     getLists: [List]
+    getItems: [Item]
   }
 
   type Mutation {
