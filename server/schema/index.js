@@ -21,9 +21,18 @@ const typeDefs = `
 
   type List {
     _id: ID!
+    board: Board
     title: String!
     description: String!
     board: Board
+    items: [Item]
+  }
+
+  type Item {
+    _id: ID!
+    list: List
+    title: String!
+    description: String!
   }
 
   type Query {
@@ -43,6 +52,9 @@ const typeDefs = `
     addList (title: String!, description: String! board: String!): List
     editList (_id: String!, title: String!, description: String!): List
     deleteList (_id: String!): List
+    addItem (title: String!, description: String!, list: String!): Item
+    editItem (_id: String!, title: String!, description: String!): Item
+    deleteItem (_id: String!): Item
   }
 `;
 

@@ -4,6 +4,7 @@ const { secretKey, duration } = require('../config');
 const User = require('../models/user');
 const Board = require('../models/board');
 const List = require('../models/list');
+const Item = require('../models/item');
 
 const resolvers = {
     Query: {
@@ -48,6 +49,22 @@ const resolvers = {
                 if (foundBoard.owner !== user.user.id) { throw new Error('Board does not belong to current user'); }
 
                 return await List.find({ board });
+            }
+            catch (err) {
+                throw new Error(err);
+            }
+        },
+
+        /*  ITEM */
+        // list = list._id
+        async getItems (root, { list }, { user }) {
+            if (!user) { throw new Error('You are not logged in'); }
+
+            try {
+                const foundList = await List.findById(list);
+                if (!foundList) { throw new Error('List not found'); }
+
+                return await Item.find({ list });
             }
             catch (err) {
                 throw new Error(err);
@@ -190,6 +207,60 @@ const resolvers = {
                 if (!foundList) { throw new Error('List not found'); }
 
                 return await List.findOneAndRemove({ _id });
+            }
+            catch (err) {
+                throw new Error(err);
+            }
+        },
+
+        /*  ITEM */
+        // list = list._id
+        async addItem(root, { title, description, list }, { user }) {
+            if (!user) { throw new Error('You are not logged in'); }
+
+            try {
+                const foundList = await List.findById(list);
+                if (!foundList) { throw new Error('List not found'); }
+
+                const item = new Item();
+                item.title = title;
+                item.description = description;
+                item.list = list;
+                await item.save();
+
+                return item;
+            }
+            catch (err) {
+                throw new Error(err);
+            }
+        },
+
+        async editItem(root, { title, description, _id }, { user }) {
+            if (!user) { throw new Error('You are not logged in'); }
+
+            try {
+                const foundItem = await Item.findById(_id)
+                if (!foundItem) { throw new Error('Item not found'); }
+
+                foundItem.title = title;
+                foundItem.description = description;
+                await foundItem.save();
+
+                return foundItem;
+            }
+            catch (err) {
+                throw new Error(err);
+            }
+        },
+
+        async deleteItem(root, { _id }, { user }) {
+            if (!user) { throw new Error('You are not logged in'); }
+
+            try {
+                const foundItem = await Item.findById(_id)
+                if (!foundItem) { throw new Error('List not found'); }
+
+                return await Item.findOneAndRemove({ _id });
             }
             catch (err) {
                 throw new Error(err);
