@@ -1,15 +1,23 @@
 const tester = require('graphql-tester').tester;
+const { ObjectID } = require('mongodb');
 
 const app = require('../server');
 const create = require('./create');
 const { users, boards, populateUsers, populateBoards } = require('./seed');
 
 const defaultUser = {
+    _id: new ObjectID(),
     name: 'Default User',
     email: 'user@tester.com',
     password: 'password101',
     role: 'user',
     avatar: 'http://www.gravatar.com/avatar/?d=mp'
+};
+
+const defaultBoard = {
+    _id: new ObjectID(),
+    title: 'Default Board',
+    description: 'Default description'
 };
 
 describe('User', () => {
@@ -74,4 +82,42 @@ describe('User', () => {
     })
 });
 
+describe('Board', () => {
+    const self = this;
 
+    beforeAll(() => {
+        self.test = tester({
+            server: create(app),
+            url: `/api`,
+            contentType: 'application/json'
+        });
+    });
+
+    beforeEach(populateUsers);
+    beforeEach(populateBoards);
+
+    it('should add new board, when owner, title and description are valid', (done) => {
+        const { title, description } = defaultBoard;
+        const owner = users[0]._id;
+
+        self.test(
+            JSON.stringify({
+                query: `
+                    mutation addBoard($title: String!, $description: String!) {
+                        addBoard (title: $title, description: $description)
+                    }
+                `,
+                variables: { title, descriptioni, owner }
+            }),
+            { jar: true }
+        )
+        .then((res) => {
+            self.token = res.data;
+            expect(res.status).toEqual(200);
+            expect(res.success).toEqual(true);
+            expect(res.data.addBoard).toBeDefined();
+            done();
+        })
+        .catch(err => done(err));
+    })
+});

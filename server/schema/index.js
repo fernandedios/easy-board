@@ -24,7 +24,6 @@ const typeDefs = `
     board: Board
     title: String!
     description: String!
-    board: Board
     items: [Item]
   }
 
