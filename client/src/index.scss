@@ -10,8 +10,17 @@ body {
     flex-direction: column;
 }
 
+nav {
+    .navbar-item {
+        img {
+            padding-right: 15px;
+        }
+    }
+}
+
 .main-content {
-    flex: 1
+    flex: 1;
+    padding: 40px 20px;
 }
 
 .footer {

@@ -19,7 +19,7 @@ class Header extends Component {
             <nav className="navbar is-dark">
                 <div className="navbar-brand">
                     <a className="navbar-item" href="/">
-                        <img src="/img/logo.png" alt="Easy Board Collaboration Tool" height="28" />
+                        <img src="/img/logo.png" alt="Easy Board Collaboration Tool" height="28" /> Easy Board
                     </a>
                     <div onClick={this.toggleMenu} className="navbar-burger burger" data-target="navbarMain">
                         <span></span>
