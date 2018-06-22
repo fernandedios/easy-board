@@ -1,10 +1,28 @@
 import React, { Component } from 'react';
 import TextInput from  '../common/TextInput';
+import Button from '../common/Button';
 
 class Login extends Component {
     render() {
         return (
-            <TextInput name="email" type="email" placeholder="Email Address" />
+            <section id="login-box" className="hero">
+                <div className="hero-body">
+                    <div className="container has-text-centered">
+                        <div className="column is-6 is-offset-3">
+                            <h3>Login</h3>
+                            <p>Kindly login to continue.</p>
+                            <div className="box">
+                                <form>
+                                    <TextInput name="email" type="email" placeholder="Email Address" />
+                                    <TextInput name="password" type="password" placeholder="Password" />
+                                    <Button name="login-btn" classes="is-block is-info is-fullwidth" label="Login" />
+                                </form>
+                            </div>
+                            <p class="has-text-grey">Don't have account? <a href="/signup">Sign up here</a></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
         );
     }
 }

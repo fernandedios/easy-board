@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 
 import Header from './Header';
 import Footer from './Footer';
+import Login from '../login/Login';
 
 class App extends Component {
   render() {
@@ -10,9 +11,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <div className="main-content">
-          <p className="App-intro">
-            To get started, edit <code>src/App.js</code> and save to reload.
-          </p>
+          <Login />
         </div>
         <Footer />
       </div>

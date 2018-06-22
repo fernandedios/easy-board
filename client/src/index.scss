@@ -21,6 +21,17 @@ nav {
 .main-content {
     flex: 1;
     padding: 40px 20px;
+
+    #login-box {
+        h3 {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        p {
+            padding-bottom: 20px;
+        }
+    }
 }
 
 .footer {
