@@ -1,26 +1,14 @@
 import React, { Component } from 'react';
 
 class TextInput extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { message: '' };
-    }
-
-    componentWillReceiveProps(nextProps) {
-        const { message } = this.props;
-        if (nextProps.message !== message) {
-            this.setState({ message });
-        }
-    }
-
     renderIcon() {
-        if (this.state.message !== '') {
+        if (this.props.message !== '') {
             return <span className="icon is-small is-right"><i className="fas fa-exclamation-triangle"></i></span>;
         }
     }
 
     render() {
-        const { name, label, placeholder, ...others } = this.props;
+        const { name, label, message, placeholder, ...others } = this.props;
 
         return (
             <div className="field">
@@ -29,7 +17,7 @@ class TextInput extends Component {
                         <input {...others} name={name} className="input" placeholder={placeholder} />
                         {this.renderIcon()}
                     </div>
-                <p className="help is-danger">{this.state.message}</p>
+                <p className="help is-danger">{message}</p>
             </div>
         );
     }
