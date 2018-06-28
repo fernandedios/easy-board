@@ -31,7 +31,7 @@ class FormValidator {
         const validation = {};
 
         this.validations.map(rule => {
-            validation[rule.field] = { isInvalid: false, message: '' };
+            return validation[rule.field] = { isInvalid: false, message: '' };
         });
 
         return { isValid: true, ...validation };

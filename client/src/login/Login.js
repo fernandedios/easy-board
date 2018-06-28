@@ -1,3 +1,4 @@
+import 'cross-fetch/polyfill';
 import React, { Component } from 'react';
 import ApolloClient, { gql } from 'apollo-boost';
 
@@ -57,6 +58,9 @@ class Login extends Component {
             const { email, password } = this.state;
             const client = new ApolloClient({
                 uri: process.env.REACT_APP_API
+            })
+            .query({
+                query: mutation
             });
         }
     }
@@ -87,6 +91,10 @@ class Login extends Component {
     }
 }
 
-const mutation = gql``;
+const mutation = gql`
+    mutation login($email: String!, $password: String!) {
+        login(email: $email, password: $password)
+    }
+`;
 
 export default Login;
