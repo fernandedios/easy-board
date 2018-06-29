@@ -1,6 +1,5 @@
-import 'cross-fetch/polyfill';
 import React, { Component } from 'react';
-import ApolloClient, { gql } from 'apollo-boost';
+import axios from 'axios';
 
 import FormValidator from '../utils/FormValidator';
 import TextInput from  '../common/TextInput';
@@ -56,12 +55,16 @@ class Login extends Component {
 
         if (validation.isValid) {
             const { email, password } = this.state;
-            const client = new ApolloClient({
-                uri: process.env.REACT_APP_API
-            })
-            .query({
-                query: mutation
-            });
+            const query = `mutation {
+                login(email: "${email}", password: "${password}")
+            }`;
+            axios.post(`${process.env.REACT_APP_API}/api`, { query })
+                .then(response => {
+                    console.log(response);
+                })
+                .catch(error => {
+                    console.log(error);
+                });
         }
     }
 
@@ -90,11 +93,5 @@ class Login extends Component {
         );
     }
 }
-
-const mutation = gql`
-    mutation login($email: String!, $password: String!) {
-        login(email: $email, password: $password)
-    }
-`;
 
 export default Login;
