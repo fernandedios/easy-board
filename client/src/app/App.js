@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 import Header from './Header';
 import Footer from './Footer';
-import Login from '../login/Login';
+import Signup from '../signup/Signup';
 
 class App extends Component {
   render() {
@@ -11,7 +11,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <div className="main-content">
-          <Login />
+          <Signup />
         </div>
         <Footer />
       </div>

@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
 import FormValidator from '../utils/FormValidator';
-import TextInput from  '../common/TextInput';
 import Button from '../common/Button';
+import TextInput from '../common/TextInput';
 
-class Login extends Component {
+class Signup extends Component {
     constructor(props) {
         super(props);
 
         this.submitted = false;
         this.validator = new FormValidator([
+            {
+                field: 'name',
+                method: 'isEmpty',
+                validWhen: false,
+                message: 'Name is required.'
+            },
             {
                 field: 'email',
                 method: 'isEmpty',
@@ -28,18 +33,36 @@ class Login extends Component {
                 method: 'isEmpty',
                 validWhen: false,
                 message: 'Password is required'
+            },
+            {
+                field: 'confirm_password',
+                method: 'isEmpty',
+                validWhen: false,
+                message: 'Confirm Password is required'
+            },
+            {
+                field: 'confirm_password',
+                method: this.passwordMatch,
+                validWhen: true,
+                message: 'Passwords do not match'
             }
+
         ]);
 
         this.state = {
+            name: '',
             email: '',
             password: '',
+            avatar: '',
+            role: '',
             validation: this.validator.valid()
         };
 
         this.handleEvent = this.handleEvent.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
+
+    passwordMatch = (confirmation, state) => (state.password === confirmation)
 
     handleEvent(e) {
         e.preventDefault();
@@ -48,44 +71,28 @@ class Login extends Component {
 
     onSubmit(e) {
         e.preventDefault();
-
-        const validation = this.validator.validate(this.state);
-        this.setState({ validation });
-        this.submitted = true;
-
-        if (validation.isValid) {
-            const { email, password } = this.state;
-            const query = `mutation {
-                login(email: "${email}", password: "${password}")
-            }`;
-            axios.post(`${process.env.REACT_APP_API}/api`, { query })
-                .then(response => {
-                    console.log(response);
-                })
-                .catch(error => {
-                    console.log(error);
-                });
-        }
     }
 
     render() {
         let validation = this.submitted ? this.validator.validate(this.state) : this.state.validation;
 
         return (
-            <section id="login-box" className="form-box hero">
+            <section id="signup-box" className="form-box hero">
                 <div className="hero-body">
                     <div className="container has-text-centered">
                         <div className="column is-6 is-offset-3">
-                            <h3>Login</h3>
-                            <p>Kindly login to continue.</p>
+                            <h3>Signup to Easy Board</h3>
+                            <p>Create an account to join</p>
                             <div className="box">
                                 <form onSubmit={this.onSubmit}>
+                                    <TextInput message={validation.name.message} onChange={this.handleEvent} value={this.state.name} name="name" type="text" placeholder="Your Name" />
                                     <TextInput message={validation.email.message} onChange={this.handleEvent} value={this.state.email} name="email" type="email" placeholder="Email Address" />
                                     <TextInput message={validation.password.message} onChange={this.handleEvent} value={this.state.password} name="password" type="password" placeholder="Password" />
-                                    <Button type="submit" name="login-btn" classes="is-block is-info is-fullwidth" label="Login" />
+                                    <TextInput message={validation.confirm_password.message} onChange={this.handleEvent} value={this.state.confirm_password} name="password" type="password" placeholder="Confirm Password" />
+                                    <Button type="submit" name="signup-btn" classes="is-block is-info is-fullwidth" label="Login" />
                                 </form>
                             </div>
-                            <p className="has-text-grey">Don't have account? <a href="/signup">Sign up here</a></p>
+                            <p className="has-text-grey">Already have account? <a href="/login">Login here</a></p>
                         </div>
                     </div>
                 </div>
@@ -94,4 +101,4 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export default Signup;
