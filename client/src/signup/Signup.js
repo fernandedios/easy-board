@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 import FormValidator from '../utils/FormValidator';
 import Button from '../common/Button';
@@ -35,6 +36,12 @@ class Signup extends Component {
                 message: 'Password is required'
             },
             {
+                field: 'password',
+                method: this.passwordValid,
+                validWhen: true,
+                message: 'Minimum 6 characters, one number, one lowercase and one uppercase letter'
+            },
+            {
                 field: 'confirm_password',
                 method: 'isEmpty',
                 validWhen: false,
@@ -63,6 +70,12 @@ class Signup extends Component {
     }
 
     passwordMatch = (confirmation, state) => (state.password === confirmation)
+    passwordValid(state) {
+        // at least one number, one lowercase and one uppercase letter
+        // at least six characters
+        const re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+        return re.test(state.password);
+    } 
 
     handleEvent(e) {
         e.preventDefault();
@@ -71,6 +84,24 @@ class Signup extends Component {
 
     onSubmit(e) {
         e.preventDefault();
+
+        const validation = this.validator.validate(this.state);
+        this.setState({ validation });
+        this.submitted = true;
+
+        if (validation.isValid) {
+            const { name, email, avatar, password } = this.state;
+            const query = `mutation {
+                signup (name: ${name}, email: ${email}, password: ${password}, avatar: ${avatar}, role: "user")
+            }`;
+            axios.post(`${process.env.REACT_APP_API}/api`, { query })
+                .then(response => {
+                    console.log(response);
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        }
     }
 
     render() {
@@ -87,9 +118,10 @@ class Signup extends Component {
                                 <form onSubmit={this.onSubmit}>
                                     <TextInput message={validation.name.message} onChange={this.handleEvent} value={this.state.name} name="name" type="text" placeholder="Your Name" />
                                     <TextInput message={validation.email.message} onChange={this.handleEvent} value={this.state.email} name="email" type="email" placeholder="Email Address" />
+                                    <TextInput message={validation.avatar.message} onChange={this.handleEvent} value={this.state.avatar} name="avatar" type="text" placeholder="Profile Avatar" />
                                     <TextInput message={validation.password.message} onChange={this.handleEvent} value={this.state.password} name="password" type="password" placeholder="Password" />
                                     <TextInput message={validation.confirm_password.message} onChange={this.handleEvent} value={this.state.confirm_password} name="password" type="password" placeholder="Confirm Password" />
-                                    <Button type="submit" name="signup-btn" classes="is-block is-info is-fullwidth" label="Login" />
+                                    <Button type="submit" name="signup-btn" classes="is-block is-info is-fullwidth" label="Signup" />
                                 </form>
                             </div>
                             <p className="has-text-grey">Already have account? <a href="/login">Login here</a></p>
