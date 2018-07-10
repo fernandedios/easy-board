@@ -12,6 +12,7 @@ exports[`<TextInput /> should render correctly 1`] = `
   >
     <input
       className="input"
+      id="test"
       name="test"
       placeholder={undefined}
     />

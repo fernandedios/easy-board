@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LoginForm /> should render correctly 1`] = `
+<section
+  className="form-box hero"
+  id="login-box"
+>
+  <div
+    className="hero-body"
+  >
+    <div
+      className="container has-text-centered"
+    >
+      <div
+        className="column is-6 is-offset-3"
+      >
+        <h3>
+          Login
+        </h3>
+        <p>
+          Kindly login to continue.
+        </p>
+        <div
+          className="box"
+        >
+          <form
+            onSubmit={[Function]}
+          >
+            <div
+              className="field"
+            >
+              <label
+                className="label"
+              />
+              <div
+                className="control has-icons-right"
+              >
+                <input
+                  className="input"
+                  id="email"
+                  name="email"
+                  onChange={[Function]}
+                  placeholder="Email Address"
+                  type="email"
+                  value=""
+                />
+              </div>
+              <p
+                className="help is-danger"
+              >
+                
+              </p>
+            </div>
+            <div
+              className="field"
+            >
+              <label
+                className="label"
+              />
+              <div
+                className="control has-icons-right"
+              >
+                <input
+                  className="input"
+                  id="password"
+                  name="password"
+                  onChange={[Function]}
+                  placeholder="Password"
+                  type="password"
+                  value=""
+                />
+              </div>
+              <p
+                className="help is-danger"
+              >
+                
+              </p>
+            </div>
+            <button
+              className="button is-block is-info is-fullwidth"
+              id="login-btn"
+              name="login-btn"
+              type="submit"
+            >
+              Login
+            </button>
+          </form>
+        </div>
+        <p
+          className="has-text-grey"
+        >
+          Don't have account? 
+          <a
+            href="/signup"
+          >
+            Sign up here
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+`;

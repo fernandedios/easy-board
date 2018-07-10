@@ -14,7 +14,7 @@ class TextInput extends Component {
             <div className="field">
                 <label className="label">{label}</label>
                     <div className="control has-icons-right">
-                        <input {...others} name={name} className="input" placeholder={placeholder} />
+                        <input {...others} id={name} name={name} className="input" placeholder={placeholder} />
                         {this.renderIcon()}
                     </div>
                 <p className="help is-danger">{message}</p>

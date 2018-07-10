@@ -60,6 +60,7 @@ class Signup extends Component {
             name: '',
             email: '',
             password: '',
+            confirm_password: '',
             avatar: '',
             role: '',
             validation: this.validator.valid()
@@ -118,9 +119,9 @@ class Signup extends Component {
                                 <form onSubmit={this.onSubmit}>
                                     <TextInput message={validation.name.message} onChange={this.handleEvent} value={this.state.name} name="name" type="text" placeholder="Your Name" />
                                     <TextInput message={validation.email.message} onChange={this.handleEvent} value={this.state.email} name="email" type="email" placeholder="Email Address" />
-                                    <TextInput message={validation.avatar.message} onChange={this.handleEvent} value={this.state.avatar} name="avatar" type="text" placeholder="Profile Avatar" />
+                                    <TextInput onChange={this.handleEvent} value={this.state.avatar} name="avatar" type="text" placeholder="Profile Avatar" />
                                     <TextInput message={validation.password.message} onChange={this.handleEvent} value={this.state.password} name="password" type="password" placeholder="Password" />
-                                    <TextInput message={validation.confirm_password.message} onChange={this.handleEvent} value={this.state.confirm_password} name="password" type="password" placeholder="Confirm Password" />
+                                    <TextInput message={validation.confirm_password.message} onChange={this.handleEvent} value={this.state.confirm_password} name="confirm_password" type="password" placeholder="Confirm Password" />
                                     <Button type="submit" name="signup-btn" classes="is-block is-info is-fullwidth" label="Signup" />
                                 </form>
                             </div>
