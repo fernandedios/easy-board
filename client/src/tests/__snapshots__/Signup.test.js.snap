@@ -1,0 +1,178 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SignupForm /> should render correctly 1`] = `
+<section
+  className="form-box hero"
+  id="signup-box"
+>
+  <div
+    className="hero-body"
+  >
+    <div
+      className="container has-text-centered"
+    >
+      <div
+        className="column is-6 is-offset-3"
+      >
+        <h3>
+          Signup to Easy Board
+        </h3>
+        <p>
+          Create an account to join
+        </p>
+        <div
+          className="box"
+        >
+          <form
+            onSubmit={[Function]}
+          >
+            <div
+              className="field"
+            >
+              <label
+                className="label"
+              />
+              <div
+                className="control has-icons-right"
+              >
+                <input
+                  className="input"
+                  id="name"
+                  name="name"
+                  onChange={[Function]}
+                  placeholder="Your Name"
+                  type="text"
+                  value=""
+                />
+              </div>
+              <p
+                className="help is-danger"
+              >
+                
+              </p>
+            </div>
+            <div
+              className="field"
+            >
+              <label
+                className="label"
+              />
+              <div
+                className="control has-icons-right"
+              >
+                <input
+                  className="input"
+                  id="email"
+                  name="email"
+                  onChange={[Function]}
+                  placeholder="Email Address"
+                  type="email"
+                  value=""
+                />
+              </div>
+              <p
+                className="help is-danger"
+              >
+                
+              </p>
+            </div>
+            <div
+              className="field"
+            >
+              <label
+                className="label"
+              />
+              <div
+                className="control has-icons-right"
+              >
+                <input
+                  className="input"
+                  id="avatar"
+                  name="avatar"
+                  onChange={[Function]}
+                  placeholder="Profile Avatar"
+                  type="text"
+                  value=""
+                />
+              </div>
+              <p
+                className="help is-danger"
+              >
+                
+              </p>
+            </div>
+            <div
+              className="field"
+            >
+              <label
+                className="label"
+              />
+              <div
+                className="control has-icons-right"
+              >
+                <input
+                  className="input"
+                  id="password"
+                  name="password"
+                  onChange={[Function]}
+                  placeholder="Password"
+                  type="password"
+                  value=""
+                />
+              </div>
+              <p
+                className="help is-danger"
+              >
+                
+              </p>
+            </div>
+            <div
+              className="field"
+            >
+              <label
+                className="label"
+              />
+              <div
+                className="control has-icons-right"
+              >
+                <input
+                  className="input"
+                  id="confirm_password"
+                  name="confirm_password"
+                  onChange={[Function]}
+                  placeholder="Confirm Password"
+                  type="password"
+                  value=""
+                />
+              </div>
+              <p
+                className="help is-danger"
+              >
+                
+              </p>
+            </div>
+            <button
+              className="button is-block is-info is-fullwidth"
+              id="signup-btn"
+              name="signup-btn"
+              type="submit"
+            >
+              Login
+            </button>
+          </form>
+        </div>
+        <p
+          className="has-text-grey"
+        >
+          Already have account? 
+          <a
+            href="/login"
+          >
+            Login here
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+`;
