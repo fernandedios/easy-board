@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import FormValidator from '../utils/FormValidator';
@@ -125,7 +126,7 @@ class Signup extends Component {
                                     <Button type="submit" name="signup-btn" classes="is-block is-info is-fullwidth" label="Signup" />
                                 </form>
                             </div>
-                            <p className="has-text-grey">Already have account? <a href="/login">Login here</a></p>
+                            <p className="has-text-grey">Already have an account? <Link to="/login">Login here</Link></p>
                         </div>
                     </div>
                 </div>
