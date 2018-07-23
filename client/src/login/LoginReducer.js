@@ -1,5 +1,13 @@
-import { combineReducers } from 'redux';
+import { DO_LOGIN } from './LoginConstants';
 
-export default combineReducers({
-    auth: {}
-});
+const loginReducer = function(state = null, action) {
+    switch (action.type) {
+        case DO_LOGIN:
+            return action.payload || false;
+
+        default:
+            return state;
+    }
+};
+
+export default loginReducer;

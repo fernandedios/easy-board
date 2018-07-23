@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { connect } from 'react-redux';
 
+import * as actions from './LoginActions';
 import FormValidator from '../utils/FormValidator';
 import TextInput from  '../common/TextInput';
 import Button from '../common/Button';
@@ -56,16 +57,7 @@ class Login extends Component {
 
         if (validation.isValid) {
             const { email, password } = this.state;
-            const query = `mutation {
-                login(email: "${email}", password: "${password}")
-            }`;
-            axios.post(`${process.env.REACT_APP_API}/api`, { query })
-                .then(response => {
-                    console.log(response);
-                })
-                .catch(error => {
-                    console.log(error);
-                });
+            this.props.doLogin({ email, password });
         }
     }
 
@@ -95,4 +87,8 @@ class Login extends Component {
     }
 }
 
-export default Login;
+const mapStateToProps = ({ auth }) => {
+    return { auth }
+};
+
+export default connect(mapStateToProps, actions)(Login);
