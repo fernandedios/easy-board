@@ -8,10 +8,10 @@ import reduxThunk from 'redux-thunk';
 
 import App from './app/App';
 import registerServiceWorker from './registerServiceWorker';
-import loginReducer from './login/LoginReducer';
+import LoginReducer from './login/LoginReducer';
 
 const reducers = combineReducers({
-    auth: loginReducer
+    auth: LoginReducer
 });
 
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));

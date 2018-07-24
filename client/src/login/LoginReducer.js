@@ -1,6 +1,6 @@
 import { DO_LOGIN } from './LoginConstants';
 
-const loginReducer = function(state = null, action) {
+const LoginReducer = function(state = null, action) {
     switch (action.type) {
         case DO_LOGIN:
             return action.payload || false;
@@ -10,4 +10,4 @@ const loginReducer = function(state = null, action) {
     }
 };
 
-export default loginReducer;
+export default LoginReducer;
