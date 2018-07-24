@@ -7,7 +7,7 @@ import FormValidator from '../utils/FormValidator';
 import TextInput from  '../common/TextInput';
 import Button from '../common/Button';
 
-class Login extends Component {
+export class Login extends Component {
     constructor(props) {
         super(props);
 

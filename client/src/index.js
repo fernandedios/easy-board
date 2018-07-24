@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { combineReducers } from 'redux';
-import { HashRouter } from 'react-router-dom'
+import { HashRouter } from 'react-router-dom';
 import reduxThunk from 'redux-thunk';
 
 import App from './app/App';

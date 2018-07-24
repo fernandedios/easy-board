@@ -92,6 +92,7 @@ exports[`<LoginForm /> should render correctly 1`] = `
           Don't have account? 
           <a
             href="/signup"
+            onClick={[Function]}
           >
             Sign up here
           </a>
