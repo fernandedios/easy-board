@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> should render correctly 1`] = `
+<nav
+  className="navbar is-dark"
+>
+  <div
+    className="navbar-brand"
+  >
+    <a
+      className="navbar-item"
+      href="/"
+    >
+      <img
+        alt="Easy Board Collaboration Tool"
+        height="28"
+        src="/img/logo.png"
+      />
+       Easy Board
+    </a>
+    <div
+      className="navbar-burger burger"
+      data-target="navbarMain"
+      onClick={[Function]}
+    >
+      <span />
+      <span />
+      <span />
+    </div>
+  </div>
+  <div
+    className="navbar-menu"
+    id="navbarMain"
+  >
+    <div
+      className="navbar-end"
+    >
+      <a
+        className="navbar-item"
+        href="https://bulma.io/"
+      >
+        Home
+      </a>
+      <a
+        className="navbar-item"
+        href="https://bulma.io/"
+      >
+        Home
+      </a>
+      <a
+        className="navbar-item"
+        href="https://bulma.io/"
+      >
+        Home
+      </a>
+      <a
+        className="navbar-item"
+        href="https://bulma.io/"
+      >
+        Home
+      </a>
+    </div>
+  </div>
+</nav>
+`;
