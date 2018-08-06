@@ -34,6 +34,72 @@ nav {
     }
 }
 
+.board {
+    white-space: nowrap;
+    margin-top: 55px;
+
+    .list {
+        width: 300px;
+        display: inline-block;
+        vertical-align: top;
+        margin: 10px;
+        background-color: #e2e4e6;
+        padding:8px;
+        border-radius:3px;
+
+        .list-name {
+            margin-bottom: 20px;
+            float:left;
+        }
+
+        .item {
+            position: relative;
+            padding: 5px;
+            clear: both;
+            white-space:normal;
+            border-bottom: 1px solid rgb(204, 204, 204);
+            background-color:#fff;
+            border-radius:3px;
+            margin-bottom:6px;
+        }
+    }
+}
+
+card:hover {
+    background-color:#edeff0;
+}
+
+.move-menu {
+    width: 300px;
+    margin: 0px;
+    padding: 10px;
+    z-index: 100;
+    position: absolute;
+    top: 0px;
+    left: 300px;
+    border: 1px grey solid;
+
+    * {
+        margin-bottom: 10px;
+    }
+
+    h1 {
+        font-size: 1.4em;
+        font-weight: bold;
+    }
+}
+
+.highlighted {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+}
+
+.remove-list, .hover-icon {
+    float: right;
+    color: transparent;
+    transition: all 0.1s ease;
+}
+
 .footer {
     background-color: #363636;
     color: #fff;
