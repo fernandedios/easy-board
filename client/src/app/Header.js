@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 export class Header extends Component {
     constructor(props) {
@@ -14,13 +16,32 @@ export class Header extends Component {
         navMenu.classList.toggle('is-active');
     }
 
+    renderMenu() {
+        if (this.props.auth) {
+            return (
+                <div className="navbar-end">
+                    <Link className="navbar-item" to="/profile">Profile</Link>
+                    <Link className="navbar-item" href="/logout">Logout</Link>
+                </div>
+            );
+        }
+        else {
+            return (
+                <div className="navbar-end">
+                    <Link className="navbar-item" to="/login">Login</Link>
+                    <Link className="navbar-item" href="/signup">Signup</Link>
+                </div>
+            );
+        }
+    }
+
     render() {
         return (
             <nav className="navbar is-dark">
                 <div className="navbar-brand">
-                    <a className="navbar-item" href="/">
+                    <Link className="navbar-item" to="/">
                         <img src="/img/logo.png" alt="Easy Board Collaboration Tool" height="28" /> Easy Board
-                    </a>
+                    </Link>
                     <div onClick={this.toggleMenu} className="navbar-burger burger" data-target="navbarMain">
                         <span></span>
                         <span></span>
@@ -29,16 +50,15 @@ export class Header extends Component {
                 </div>
 
                 <div id="navbarMain" className="navbar-menu">
-                    <div className="navbar-end">
-                        <a className="navbar-item" href="https://bulma.io/">Home</a>
-                        <a className="navbar-item" href="https://bulma.io/">Home</a>
-                        <a className="navbar-item" href="https://bulma.io/">Home</a>
-                        <a className="navbar-item" href="https://bulma.io/">Home</a>
-                    </div>
+                    {this.renderMenu()}
                 </div>
             </nav>
         );
     }
 }
 
-export default Header;
+const mapStateToProps = ({ auth }) => {
+    return { auth };
+};
+
+export default connect(mapStateToProps)(Header);
