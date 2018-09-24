@@ -21,7 +21,7 @@ export class Header extends Component {
             return (
                 <div className="navbar-end">
                     <Link className="navbar-item" to="/profile">Profile</Link>
-                    <Link className="navbar-item" href="/logout">Logout</Link>
+                    <Link className="navbar-item" to="/logout">Logout</Link>
                 </div>
             );
         }
@@ -29,7 +29,7 @@ export class Header extends Component {
             return (
                 <div className="navbar-end">
                     <Link className="navbar-item" to="/login">Login</Link>
-                    <Link className="navbar-item" href="/signup">Signup</Link>
+                    <Link className="navbar-item" to="/signup">Signup</Link>
                 </div>
             );
         }
