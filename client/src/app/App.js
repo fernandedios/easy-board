@@ -10,7 +10,7 @@ import Signup from '../signup/Signup';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="app">
         <Header />
         <div className="main-content">
           <Switch>
