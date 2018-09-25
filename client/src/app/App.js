@@ -6,6 +6,7 @@ import Header from './Header';
 import Footer from './Footer';
 import Login from '../login/Login';
 import Signup from '../signup/Signup';
+import Board from '../board/Board';
 
 class App extends Component {
   render() {
@@ -14,7 +15,7 @@ class App extends Component {
         <Header />
         <div className="main-content">
           <Switch>
-            <Route exact path="/" component={Login} />
+            <Route exact path="/" component={Board} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
           </Switch>
