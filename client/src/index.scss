@@ -29,8 +29,10 @@ nav {
 }
 
 .main-content {
-    padding: 40px;
+    padding: 35px;
     height: 100%;
+    overflow-x: auto;
+    
     .form-box {
         h3 {
             font-size: 25px;
@@ -111,107 +113,133 @@ nav {
 }
 
 .board {
-margin-top: 20px;
-white-space: nowrap;
+    margin-top: 20px;
+    white-space: nowrap;
 }
+
 .board > * {
     display: inline-block;
 }
+
 .board .new-list {
     margin-top: 10px;
 }
+
 .list-container {
-width: 320px;
-padding: 10px;
-margin: 5px;
-margin-right: 20px;
-background-color: #fcfcfc;
--webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
-        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
-}
-.lists-container > * {
-display: inline-block;
-vertical-align: top;
-}
-.list-header {
-margin-bottom: 5px;
-}
-.card {
-margin: 5px;
-background-color: white;
--webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
-        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
-padding: 10px;
-}
-.card-ghost {
--webkit-transition: 0.25s all;
-transition: 0.25s all;
--webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
--webkit-transform: scale(1.1);
-        transform: scale(1.1);
-}
-.card-ghost-drop {
--webkit-transform: scale(1);
-        transform: scale(1);
-}
-.list-header {
-font-size: 18px;
-}
-.list-drag-handle {
-cursor: move;
-padding: 5px;
-}
-.item-entry {
-padding-top: 10px;
-margin-top: 10px;
-border-top: 1px solid #DDD;
-}
-.new-list {
-width: 320px;
-margin-left: -10px;
-}
-.clear-button {
-position: absolute;
-top: 20px;
-right: 20px;
+    width: 320px;
+    padding: 10px;
+    margin: 5px;
+    margin-right: 20px;
+    background-color: #fcfcfc;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+    
+    section.list-container {
+        width: 290px;
+        padding: 10px;
+        margin: 5px;
+        margin-right: 20px;
+        background-color: #fcfcfc;
+        -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+                box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+    }
 }
 
+.lists-container > * {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.list-header {
+    margin-bottom: 5px;
+}
+
+.card {
+    margin: 5px;
+    background-color: white;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+    padding: 10px;
+}
+
+.card-ghost {
+    -webkit-transition: 0.25s all;
+    transition: 0.25s all;
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+}
+.card-ghost-drop {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+}
+
+.list-header {
+    font-size: 18px;
+}
+
+.list-drag-handle {
+    cursor: move;
+    padding: 5px;
+}
+
+.item-entry {
+    padding-top: 10px;
+    margin-top: 10px;
+    border-top: 1px solid #DDD;
+}
+.new-list {
+    width: 320px;
+    margin-left: -10px;
+}
+.clear-button {
+    position: absolute;
+    top: 60px;
+    right: 10px;
+}
 
 .ui-item-entry {
     margin: 5px;
 }
 
-.card[data-v-5578bfa0] {
+.card {
     position: relative;
     border-radius: 3px;
     cursor: default;
 }
-.item-description[data-v-5578bfa0] {
+
+.item-description {
     font-size: 0.7em;
 }
-.icons[data-v-5578bfa0] {
+
+.icons {
     position: absolute;
     top: 10px;
     right: 10px;
     cursor: pointer;
 }
-.is-overdue[data-v-5578bfa0] {
+
+.is-overdue {
     color: red;
     border: 1px solid red;
 }
-.card:hover .icon-due[data-v-5578bfa0],
-.card:hover .icon-date[data-v-5578bfa0] {
+
+.card:hover .icon-due,
+.card:hover .icon-date {
     display: none;
 }
-.icon-edit[data-v-5578bfa0],
-.icon-date[data-v-5578bfa0] {
+
+.icon-edit,
+.icon-date {
     color: #DDD;
 }
-.icon-edit[data-v-5578bfa0] {
+
+.icon-edit {
     display: none;
     margin-right: -5px;
 }
-.card:hover .icon-edit[data-v-5578bfa0] {
+
+.card:hover .icon-edit {
     display: block;
 }
