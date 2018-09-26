@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Item from '../item/Item';
+import NewEntry from '../item/NewEntry';
 
 class List extends Component {
     render() {
@@ -17,6 +18,9 @@ class List extends Component {
                                     <Item />
                                     <Item />
                                     <Item />
+                                    <div className="new-entry">
+                                        <NewEntry placeholder="Add new item" />
+                                    </div>
                                 </div>
                             </div>
                         </section>
