@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const ClearButton = () => {
     return (
         <div className="clear-button">
