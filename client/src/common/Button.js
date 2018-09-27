@@ -5,7 +5,7 @@ class Button extends Component {
         const { name, label, classes, ...others } = this.props;
 
         return (
-            <button {...others} name={name} id={name} className={`button ${classes}`}>Login</button>
+            <button {...others} name={name} id={name} className={`button ${classes}`}>{label}</button>
         );
     }
 }
