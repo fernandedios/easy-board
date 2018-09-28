@@ -7,6 +7,8 @@ class NewEntry extends Component {
         this.state = {
             entry: ''
         };
+
+        this.handleEvent = this.handleEvent.bind(this);
     }
 
     handleEvent(e) {
@@ -17,13 +19,13 @@ class NewEntry extends Component {
     render() {
         const { placeholder, type } = this.props;
         return (
-            <div class="ui-item-entry field has-addons">
-                <div class="control is-expanded">
-                    <input name="entry" onChange={this.handleEvent} placeholder={placeholder} value={this.state.entry} class="input" />
+            <div className="ui-item-entry field has-addons">
+                <div className="control is-expanded">
+                    <input name="entry" onChange={this.handleEvent} placeholder={placeholder} value={this.state.entry} className="input" />
                 </div>
-                <div class="control">
-                    <button type="submit" class="button is-primary">
-                        <span class="icon is-small"><i class="fas fa-angle-right"></i></span>
+                <div className="control">
+                    <button type="submit" className="button is-primary">
+                        <span className="icon is-small"><i className="fas fa-angle-right"></i></span>
                     </button>
                 </div>
             </div>
