@@ -9,7 +9,7 @@ class Board extends Component {
         return (
             <div className="board-container">
                 <div className="board">
-                    <ClearButton />
+                    <ClearButton label="Reset Board" />
                     <List />
                     <List />
                     <List />

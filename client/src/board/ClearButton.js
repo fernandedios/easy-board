@@ -1,10 +1,11 @@
 import React from 'react';
+import Button from '../common/Button';
 
-const ClearButton = () => {
+const ClearButton = ({ label, ...others }) => {
     return (
         <div className="clear-button">
             <div className="control">
-                <button type="button" className="button is-button">Reset Board</button>
+                <Button {...others} name="clear-btn" classes="is-button" label={label} />
             </div>
         </div>
     );
