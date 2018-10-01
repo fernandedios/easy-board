@@ -17,11 +17,11 @@ class NewEntry extends Component {
     }
 
     render() {
-        const { placeholder, type } = this.props;
+        const { placeholder, type, name } = this.props;
         return (
             <div className="ui-item-entry field has-addons">
                 <div className="control is-expanded">
-                    <input name="entry" onChange={this.handleEvent} placeholder={placeholder} value={this.state.entry} className="input" />
+                    <input name={name} onChange={this.handleEvent} placeholder={placeholder} value={this.state.entry} className="input" />
                 </div>
                 <div className="control">
                     <button type="submit" className="button is-primary">
