@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import ClearButton from './ClearButton';
 import List from '../list/List';
 import NewEntry from '../item/NewEntry';
+import Modal from '../common/Modal';
 
 class Board extends Component {
     render() {
@@ -17,6 +18,7 @@ class Board extends Component {
                         <NewEntry placeholder="Add new list" />
                     </div>
                 </div>
+                <Modal name="ItemEditModal" />
             </div>
        );
     }

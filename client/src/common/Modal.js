@@ -27,4 +27,9 @@ class Modal extends Component {
     }
 }
 
+Modal.defaultProps = {
+    title: '',
+    content: ''
+};
+
 export default Modal;
